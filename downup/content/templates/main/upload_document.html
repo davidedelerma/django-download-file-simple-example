@@ -1,0 +1,12 @@
+{% extends 'layouts/default/page.html' %}
+{% load bootstrap4 %}
+
+
+{% block content %}
+  <h2>Upload Document</h2>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+        {% bootstrap_form form %}
+    <button type="submit" class="btn btn-primary">Upload Document</button>
+  </form>
+{% endblock %}

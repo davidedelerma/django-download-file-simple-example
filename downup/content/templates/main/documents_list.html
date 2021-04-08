@@ -1,0 +1,46 @@
+{% extends 'layouts/default/page.html' %}
+{% block content %}
+    {% if request.user.is_authenticated %}
+        {% block content_header %}
+            <h2>Documents</h2>
+            <p>
+                <a href="{% url 'upload_document' %}" class="btn btn-primary">Upload Document</a>
+            </p>
+        {% endblock %}
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">File Name</th>
+              <th scope="col">Is Public</th>
+              <th scope="col">Created by</th>
+              <th scope="col">Created at</th>
+              <th scope="col">Download</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for document in documents %}
+            <tr>
+              <td>{{ document.file_name }}</td>
+              <td>{{ document.public }}</td>
+              <td>{{ document.created_by }}</td>
+              <td>{{ document.created_at }}</td>
+              <td>
+                <form method="post" id="downloadDocumentForm" data-url="{% url 'download_document' %}">
+                  {% csrf_token %}
+                  <input type="hidden" id="file_path" name="file_path" value="{{ document.file }}">
+                  <button type="button" id="downloadDocument" class="btn btn-primary">Download Document</button>
+                </form>
+              </td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+    {% else %}
+
+        <blockquote class="blockquote text-center">
+          <p class="mb-0">Welcome.</p>
+          <footer class="blockquote-footer">Please login or register to enter the site</footer>
+        </blockquote>
+
+    {% endif %}
+{% endblock %}
