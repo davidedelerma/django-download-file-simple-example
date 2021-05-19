@@ -2,11 +2,11 @@
 
 ## Requirements:
 
-- Register and log-in using a username and password
-- Upload files, allowing the user to select whether the file is ‘public’, or ‘private’
-- View a list of the users previously uploaded files, and files uploaded as ‘public’, including upload time/date, 
+1. Register and log-in using a username and password
+2. Upload files, allowing the user to select whether the file is ‘public’, or ‘private’
+3. View a list of the users previously uploaded files, and files uploaded as ‘public’, including upload time/date, 
 and a link to the original upload
-- Provide an API endpoint that allows a valid user to search by filename over any files they have permission to see, 
+4. Provide an API endpoint that allows a valid user to search by filename over any files they have permission to see, 
 returning paths that can be used to download matching files
 
 ## Instructions:
